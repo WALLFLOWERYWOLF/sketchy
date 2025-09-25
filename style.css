@@ -1,0 +1,15 @@
+html {
+  box-sizing: border-box;
+}
+
+.container > * {
+  box-sizing: border-box;
+}
+
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  border: 1px solid black;
+  width: 840px;
+  height: 840px;
+}
