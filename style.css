@@ -9,7 +9,8 @@ html {
 .container {
   display: flex;
   flex-wrap: wrap;
-  border: 1px solid black;
+  border: 1px solid rgb(0, 0, 0);
   width: 840px;
   height: 840px;
+  background-color: rgb(0, 0, 0);
 }

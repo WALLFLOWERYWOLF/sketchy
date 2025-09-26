@@ -1,8 +1,9 @@
 const container = document.querySelector(".container");
 const changeGridSizeBtn = document.querySelector(".change-grid-size");
 const rainbowBtn = document.querySelector(".rainbow");
-let pencilColor = "black";
-let bgColor = "white";
+const darkenBtn = document.querySelector(".darken");
+let pencilColor = "rgb(0, 0, 0)";
+let bgColor = "rgb(255, 255, 255)";
 let mode = "normal";
 let totalGridCells = 256;
 let numberOfCellsPerSide = 16;
@@ -25,7 +26,8 @@ function drawGrid() {
     cell.style.width = dimensions;
     cell.style.height = dimensions;
     cell.style.border = "1px solid black";
-    cell.style.backgroundColor = "white";
+    cell.style.backgroundColor = bgColor;
+    cell.style.opacity = "1.0";
     container.appendChild(cell);
   }
 }
@@ -37,6 +39,13 @@ function rainbow() {
   return `rgb(${r}, ${g}, ${b})`;
 }
 
+function darkens(e) {
+  if (e.target.getAttribute("class") !== "container") {
+    let currentOpacity = e.target.style.opacity;
+    e.target.style.opacity = `${currentOpacity - 0.1}`;
+  }
+}
+
 container.addEventListener("mouseover", (e) => {
   switch (mode) {
     case "normal":
@@ -44,6 +53,11 @@ container.addEventListener("mouseover", (e) => {
       break;
     case "rainbow":
       e.target.style.backgroundColor = rainbow();
+      e.target.style.opacity = "1.0";
+      break;
+    case "darken":
+      darkens(e);
+      break;
   }
 });
 
@@ -54,6 +68,10 @@ changeGridSizeBtn.addEventListener("click", () => {
 
 rainbowBtn.addEventListener("click", () => {
   mode = "rainbow";
+});
+
+darkenBtn.addEventListener("click", () => {
+  mode = "darken";
 });
 
 drawGrid();
