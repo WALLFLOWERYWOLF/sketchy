@@ -52,8 +52,10 @@ container.addEventListener("mouseover", (e) => {
       e.target.style.backgroundColor = pencilColor;
       break;
     case "rainbow":
-      e.target.style.backgroundColor = rainbow();
-      e.target.style.opacity = "1.0";
+      if (e.target.getAttribute("class") !== "container") {
+        e.target.style.backgroundColor = rainbow();
+        e.target.style.opacity = "1.0";
+      }
       break;
     case "darken":
       darkens(e);
